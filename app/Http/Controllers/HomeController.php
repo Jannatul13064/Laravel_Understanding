@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return Product::find(1)->user;
+        return Product::with('many_to_many')->find(1);
     }
 
     // public function show(Request $request){
@@ -70,7 +70,7 @@ class HomeController extends Controller
     }
     public function updateOperation()
     {
-        DB::Update('Update products SET name= "Laptop", price = 50000 where id = 11');
+        DB::Update('Update products SET name= "Laptop1", price = 77000 where id = 11');
         return 'update operation called';
     }
     public function deleteOperation()
@@ -80,7 +80,7 @@ class HomeController extends Controller
     }
 
 
-    ///**************************CRUD-User****************************************** */
+    ///**************************CRUD-**********User******************************** */
 
 
     public function createUser()
@@ -88,5 +88,21 @@ class HomeController extends Controller
         DB::insert('Insert into users (id,name,email,password,products_id) values(?,?,?,?,?)', [3, 'Sultan', 'sultan@gmail.com', '221221', '4']);
 
         return 'Successfully Inserted';
+    }
+
+    public function readUser()
+    {
+        $userList = DB::select('select name,email,password from users');
+        return $userList;
+    }
+    public function updateUser()
+    {
+        DB::Update('Update users SET name= "Rana",email = "rana@gmail.com" where id = 9');
+        return ' User Updated is called';
+    }
+    public function deleteUser()
+    {
+        DB::delete('Delete from users where id = 5');
+        return 'delete operation called';
     }
 }

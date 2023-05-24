@@ -19,10 +19,19 @@ class Product extends Model
     // public $incrementing = false;
 
 
-    public function user()
+    public function user_one_to_one()
     {
 
         // return $this->hasOne(User::class, 'products_id', 'id'); -->Why its not worked properly?
         return $this->hasOne(User::class, 'id');
+    }
+    public function user_one_to_many()
+    {
+        return $this->hasMany(User::class, 'products_id', 'id');
+    }
+
+    public function many_to_many()
+    {
+        return $this->belongsToMany(User::class, 'product_user', 'product_id', 'user_id');
     }
 }

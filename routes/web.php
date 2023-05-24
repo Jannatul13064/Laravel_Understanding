@@ -30,6 +30,9 @@ Route::get('/delete', 'HomeController@deleteOperation');
 
 ///CRUD for Users
 Route::get('/userInfo', 'HomeController@createUser');
+Route::get('/updatedUser', 'HomeController@updateUser');
+Route::get('/showUser', 'HomeController@readUser');
+Route::get('/deleteUser', 'HomeController@deleteUser');
 
 // Route::get('/home/{userid}/{age}', function ($userid,$age) {
 //     $username = request('username');
