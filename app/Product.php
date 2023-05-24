@@ -22,8 +22,8 @@ class Product extends Model
     public function user_one_to_one()
     {
 
-        // return $this->hasOne(User::class, 'products_id', 'id'); -->Why its not worked properly?
-        return $this->hasOne(User::class, 'id');
+        return $this->hasOne(User::class, 'products_id', 'id');
+        // return $this->hasOne(User::class, 'id');
     }
     public function user_one_to_many()
     {
